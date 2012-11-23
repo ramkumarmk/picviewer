@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Picviewer</title>
-  <meta name="google-site-verification" content="bhz5UPU_aUjRLma-ScicpsdF9hTb9uJ7G1ZFyssM3uQ" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<% if current_user.nil? %>
+	<%= link_to("Login", "https://accounts.google.com/o/oauth2/auth?
+scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&
+state=/profile&
+redirect_uri=#{APP_CONFIG["redirect_uri"]}&
+response_type=code&
+client_id=#{APP_CONFIG["client_id"]}")%>
+	<% else %>
+		Hi, <%= current_user.name %> <%= link_to("Logout", logout_path)%>
+	<% end %>
 <%= yield %>
 
 </body>

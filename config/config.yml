@@ -1,0 +1,9 @@
+development:
+  client_id: "840675873832-bpcqbr8784vqb6quk8cuedtnoor8r83r.apps.googleusercontent.com"
+  client_secret: "ZeWndfl_O7eaaN1y7e-3Zfhr"
+  redirect_uri: "http://localhost:3000/oauth2callback"
+
+production:
+  client_id: "840675873832.apps.googleusercontent.com"
+  client_secret: "KJheXuhpFzgFsV7IjvKF2-sb"
+  redirect_uri: "http://picviewer.herokuapp.com/oauth2callback"

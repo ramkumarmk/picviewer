@@ -1,4 +1,9 @@
 Picviewer::Application.routes.draw do
+  match '/logout' => 'home#logout', as: 'logout'
+  match '/oauth2callback' => 'home#login'
+  root :to => 'home#index'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
