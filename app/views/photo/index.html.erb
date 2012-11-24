@@ -13,8 +13,13 @@
 		<% end %>
 	</ul>
 	</div>
-	<div >
+	<div class="span3">
+		<%= form_tag("/user/album/#{p.attributes.albumId}/photo/#{p.attributes.id}/comments") do %>
+			<input type="textarea" name="content" rows="2"/>
+			<%= submit_tag 'post'%>
+		<% end %>
 	</div>
+</div>
 
 <% end %>
 </div>

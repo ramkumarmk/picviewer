@@ -18,6 +18,7 @@ class Picasa
 	    return [] if entries.nil?
 	    photos = Photo.convert_to_photos(entries)
 	    photos.each do |photo|
+	    	photo.set_attribute({"albumId" => albumId})
 	    	photo.set_attribute({"comments" => Picasa.get_comments(email, albumId, photo.attributes.id)})
 	    end
 	end
@@ -26,7 +27,7 @@ class Picasa
 		url = URI.parse("https://picasaweb.google.com/data/feed/api/user/#{email}/albumid/#{albumId}/photoid/#{photoId}?kind=comment&alt=json")
 	    http = Net::HTTP.new(url.host, url.port)
 	    http.use_ssl = true
-	    request = Net::HTTP::Get.new(url.request_uri)
+	    request = Net::HTTP::Get.new(url.request_uri, {'cache-control' => 'private, max-age=0, must-revalidate' })
 	    entries = OpenStruct.new(JSON.parse(http.request(request).body)).feed["entry"]
 	    return [] if entries.nil?
 	    Comment.convert_to_comments(entries)

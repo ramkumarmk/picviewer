@@ -18,11 +18,11 @@
 <div style="padding-bottom:20px">
     <% if current_user.nil? %>
 	<%= link_to("Login", "https://accounts.google.com/o/oauth2/auth?
-scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&
+scope=https://picasaweb.google.com/data/+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&
 state=/profile&
 redirect_uri=#{APP_CONFIG["redirect_uri"]}&
 response_type=code&
-client_id=#{APP_CONFIG["client_id"]}")%>
+client_id=#{APP_CONFIG["client_id"]}&access_type=offline")%>
 	<% else %>
 		Hi, <%= current_user.name %> <%= link_to("[logout]", logout_path)%>
 	<% end %>
@@ -31,6 +31,11 @@ client_id=#{APP_CONFIG["client_id"]}")%>
 
   
 </header>
+<% if flash[:notice]%>
+<div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
 
 	
 <%= yield %>

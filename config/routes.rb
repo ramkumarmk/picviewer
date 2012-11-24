@@ -5,7 +5,7 @@ Picviewer::Application.routes.draw do
   resource :user do
     resources :album, only: [:index] do
       resources :photo, only: [:index] do
-        resources :comments, only:[:index]
+        resources :comments, only:[:index, :create]
     end
   end
 end
