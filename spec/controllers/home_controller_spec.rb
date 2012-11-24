@@ -10,9 +10,11 @@ describe HomeController do
 
 	context "logout" do
 		it "should logout and redirect to root path" do
-			controller.should_receive(:set_current_user).with(nil)
+			@user = User.create(name: "ram", email: "abc@gmail.com")
+			controller.set_current_user @user
 			get :logout
 			response.should redirect_to(root_path)
+			controller.current_user.should be_nil
 		end
 	end
 	

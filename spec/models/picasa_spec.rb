@@ -28,7 +28,7 @@ describe "picasa" do
 		response = {"feed" => { "entry" => {} }}
 		mockResponse = mock(body: {"feed" => { "entry" => {} }}.to_json )
 
-		URI.should_receive(:parse).with("https://picasaweb.google.com/data/feed/api/user/#{email}/albumid/#{albumId}?alt=json").and_return(mockUrl)
+		URI.should_receive(:parse).with("https://picasaweb.google.com/data/feed/api/user/#{email}/albumid/#{albumId}?alt=json&max-results=3").and_return(mockUrl)
 		Net::HTTP.should_receive(:new).and_return(mockHttp)
 		mockHttp.should_receive(:use_ssl=).with(true)
 		mockUrl.should_receive(:request_uri).and_return("")

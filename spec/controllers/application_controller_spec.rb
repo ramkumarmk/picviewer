@@ -10,9 +10,4 @@ describe ApplicationController do
 	it 'should set current user and return the same' do
 		controller.current_user.should eq(@user)
 	end
-
-	it "should empty sessions on logout" do
-		controller.logout
-		controller.current_user.should be_nil
-	end
 end
