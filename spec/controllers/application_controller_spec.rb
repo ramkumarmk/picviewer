@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ApplicationController do
 
 	it 'should return nil if current_user not set' do
+		controller.set_current_user nil
 		controller.current_user.should be_nil
 	end
 

@@ -1,12 +1,14 @@
 Picviewer::Application.routes.draw do
   match '/logout' => 'home#logout', as: 'logout'
-  match '/oauth2callback' => 'home#login'
+  match '/oauth2callback' => 'users#create_user_session'
   root :to => 'home#index'
   resource :user do
-    member do
-      get 'album_index'
+    resources :album, only: [:index] do
+      resource :photo, only: [:index]
     end
   end
+
+  
 
 
   # The priority is based upon order of creation:
