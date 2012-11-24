@@ -10,7 +10,7 @@ class Picasa
 	end
 
 	def self.get_photos(email, albumId)
-		url = URI.parse("https://picasaweb.google.com/data/feed/api/user/#{email}/albumid/#{albumId}?alt=json")
+		url = URI.parse("https://picasaweb.google.com/data/feed/api/user/#{email}/albumid/#{albumId}?alt=json&max-results=3")
 	    http = Net::HTTP.new(url.host, url.port)
 	    http.use_ssl = true
 	    request = Net::HTTP::Get.new(url.request_uri)

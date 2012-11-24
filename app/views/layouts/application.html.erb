@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if current_user.nil? %>
+	<div class="container">
+	<header class="jumbotron subhead" id="overview">
+  <div class="row head">
+    <div class="span6">
+      <a href="<%= user_album_index_path %>" style="color: rgba(255, 255, 255, 0.9);text-decoration:none"><h1>PicViewer</h1>
+      <p class="lead">Quick glance of your picasa</p>
+    </div>
+</div>
+<div style="padding-bottom:20px">
+    <% if current_user.nil? %>
 	<%= link_to("Login", "https://accounts.google.com/o/oauth2/auth?
 scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&
 state=/profile&
@@ -15,9 +24,17 @@ redirect_uri=#{APP_CONFIG["redirect_uri"]}&
 response_type=code&
 client_id=#{APP_CONFIG["client_id"]}")%>
 	<% else %>
-		Hi, <%= current_user.name %> <%= link_to("Logout", logout_path)%>
+		Hi, <%= current_user.name %> <%= link_to("[logout]", logout_path)%>
 	<% end %>
+</div>
+    
+
+  
+</header>
+
+	
 <%= yield %>
+</div>
 
 </body>
 </html>

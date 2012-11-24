@@ -1,6 +1,12 @@
-<% @photos.each do |p|%>
-	<%= p.attributes.image_uri  %>
-	<%= p.attributes.summary %>
-	<img src="<%= p.attributes.image_uri %>"/>
+<div class="row">
+<% @photos.each_with_index do |p, index|%>
+	<div class="span4">
+	
+	
+	<div class="span3"><img src="<%= p.attributes.image_uri %>"/></div>
+	<div class="span4 center"><%= "Photo #{index+1}"  %></div>
+	<div class="span4"><%= p.attributes.summary %></div>
+	</div>
 
 <% end %>
+</div>

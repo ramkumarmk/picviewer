@@ -1,6 +1,16 @@
+<div class="row">
+<ul class="thumbnails">
 <% @albums.each do |a|%>
-	<%= link_to(a.attributes.title, user_album_photo_index_path(a.attributes.id))  %>
-	<%= a.attributes.published_date + a.attributes.summary + a.attributes.link  %>
-	<img src="<%= a.attributes.thumbnail %>"/>
+	<li class="span2">
+		<a href="<%= user_album_photo_index_path(a.attributes.id)%>">
+		<div class="thumbnail">
 
+			<img src="<%= a.attributes.thumbnail %>"/>
+ 			<h6><%= a.attributes.title %></h6> 
+		</div>
+	</a>
+
+	</li>
 <% end %>
+</ul>
+</div>
