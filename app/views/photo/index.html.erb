@@ -1,0 +1,6 @@
+<% @photos.each do |p|%>
+	<%= p.attributes.image_uri  %>
+	<%= p.attributes.summary %>
+	<img src="<%= p.attributes.image_uri %>"/>
+
+<% end %>

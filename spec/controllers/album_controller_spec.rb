@@ -3,9 +3,10 @@ require "spec_helper"
 describe AlbumController do
 	describe "get albums" do
 		before(:each) do
-			@user  = mock(:user)
+			@user  = User.create(name: "ram", email: "abc@gmail.com")
 			controller.set_current_user(@user)
 		end
+		
 		it "should list all album meta details" do
 			@user.should_receive(:get_albums).and_return("")
 			get :index

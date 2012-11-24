@@ -1,4 +1,6 @@
 <% @albums.each do |a|%>
-	<%= a.attributes.title + a.attributes.published_date + a.attributes.summary + a.attributes.link  %>
+	<%= link_to(a.attributes.title, user_album_photo_index_path(a.attributes.id))  %>
+	<%= a.attributes.published_date + a.attributes.summary + a.attributes.link  %>
 	<img src="<%= a.attributes.thumbnail %>"/>
+
 <% end %>

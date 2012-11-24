@@ -9,6 +9,9 @@ describe "album" do
 			"link" => [{
 					"href" => "album_link"
 					}],
+			"gphoto$id" => {
+                "$t" => "123"
+            },
 			"media$group" => {
 					"media$thumbnail" => [{
 							"url" => "thumbnail"
@@ -23,5 +26,6 @@ describe "album" do
 		album.attributes.link.should == "album_link"
 		album.attributes.title.should == "Profile Photos"
 		album.attributes.thumbnail.should == "thumbnail"
+		album.attributes.id.should == "123"
 	end
 end

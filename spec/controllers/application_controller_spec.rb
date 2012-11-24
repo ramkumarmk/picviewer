@@ -2,14 +2,17 @@ require 'spec_helper'
 
 describe ApplicationController do
 
-	it 'should return nil if current_user not set' do
-		controller.set_current_user nil
-		controller.current_user.should be_nil
+	before(:each) do
+		@user = User.create(name: "ram", email: "abc@gmail.com")
+		controller.set_current_user @user
 	end
 
 	it 'should set current user and return the same' do
-		user = User.new
-		controller.set_current_user user
-		controller.current_user.should eq(user)
+		controller.current_user.should eq(@user)
+	end
+
+	it "should empty sessions on logout" do
+		controller.logout
+		controller.current_user.should be_nil
 	end
 end
