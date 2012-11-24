@@ -4,9 +4,11 @@ Picviewer::Application.routes.draw do
   root :to => 'home#index'
   resource :user do
     resources :album, only: [:index] do
-      resources :photo, only: [:index]
+      resources :photo, only: [:index] do
+        resources :comments, only:[:index]
     end
   end
+end
 
   
 

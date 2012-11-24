@@ -33,7 +33,7 @@ describe "picasa" do
 		mockHttp.should_receive(:use_ssl=).with(true)
 		mockUrl.should_receive(:request_uri).and_return("")
 		mockHttp.should_receive(:request).and_return(mockResponse)
-		Photo.should_receive(:convert_to_photos)
+		Photo.should_receive(:convert_to_photos).and_return([])
 
 		Net::HTTP::Get.should_receive(:new)
 		Picasa.get_photos(email, albumId)

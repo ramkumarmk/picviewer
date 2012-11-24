@@ -6,6 +6,14 @@
 	<div class="span3"><img src="<%= p.attributes.image_uri %>"/></div>
 	<div class="span4 center"><%= "Photo #{index+1}"  %></div>
 	<div class="span4"><%= p.attributes.summary %></div>
+	<div class="span3">
+	<ul>
+		<% p.attributes.comments.each do |c|%>
+			<li><span style="color:rgb(0, 255, 245);"><%= "#{c.attributes.author} : "%></span><%= c.attributes.content %></li>
+		<% end %>
+	</ul>
+	</div>
+	<div >
 	</div>
 
 <% end %>
