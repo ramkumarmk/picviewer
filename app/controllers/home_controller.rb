@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 		user_info = get_user_info_json(access_token)
 	    user = User.find_or_create_by_email(email: user_info["email"], name: user_info["name"])
 	    set_current_user(user)
-	    redirect_to root_path
+	    redirect_to album_index_user_path
 	end
 
 	def logout
